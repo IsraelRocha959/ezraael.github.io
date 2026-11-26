@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTAL SHINOBI</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="sheet">
+    <header class="topbar">
+      <div class="brand"><img class="brand-mark" src="icon.png" alt="Portal Shinobi"><div><strong>PORTAL SHINOBI</strong><small>FICHA DE PERSONAGEM</small></div></div>
+      <div class="motto">UM NINJA NUNCA DESISTE.</div>
+    </header>
+
+    <nav class="sheetbar" aria-label="Fichas">
+      <div class="current-sheet"><small>Ficha atual</small><strong id="currentSheetName"></strong></div>
+      <button type="button" id="openPanel" class="action">Painel de fichas</button>
+      <span id="saveStatus" role="status"></span>
+    </nav>
+
+    <section class="upper">
+      <div class="identity">
+        <h2>Informações do personagem</h2>
+        <div class="fields">
+          <label class="wide">Nome do Personagem / Apelido<input placeholder="Digite o nome"></label>
+          <label class="wide"><span class="kanji-label">一族, Ichizoku</span><select><option value="">Selecione</option><option>Casa Akitsuki</option><option>Casa Hachibe</option><option>Casa Kakei</option><option>Casa Karatachi</option><option>Casa Suzumeno</option><option>Casa Yoimura</option><option>Clã Aburame</option><option>Clã Akimichi</option><option>Clã Amagiri</option><option>Clã Andarilho</option><option>Clã Chinoike</option><option>Clã de Hanzou</option><option>Clã de Juugo</option><option>Clã de Ryuuzetsu</option><option>Clã de Taruho</option><option>Clã de Yomi</option><option>Clã do Gelel</option><option>Clã do País dos Vegetais</option><option>Clã dos Kazekage</option><option>Clã dos Raikage</option><option>Clã Fuuma</option><option>Clã Fuuma (País do Som)</option><option>Clã Funato</option><option>Clã Gama</option><option>Clã Hagoromo</option><option>Clã Hatake</option><option>Clã Hirasaka</option><option>Clã Hoozuki</option><option>Clã Houki</option><option>Clã Hoshigaki</option><option>Clã Hyuuga</option><option>Clã Iburi</option><option>Clã Inuzuka</option><option>Clã Izumo</option><option>Clã Izuno</option><option>Clã Kaguya</option><option>Clã Kamizuru</option><option>Clã Kedouin</option><option>Clã Kohaku</option><option>Clã Kodon</option><option>Clã Kubisaki</option><option>Clã Kumanoi</option><option>Clã Kurama</option><option>Clã Lee</option><option>Clã Nara</option><option>Clã Onikuma</option><option>Clã Otenki</option><option>Clã Rinha</option><option>Clã Sarutobi</option><option>Clã Senju</option><option>Clã Shimura</option><option>Clã Shirogane</option><option>Clã Soprista</option><option>Clã Tachibana</option><option>Clã Taketori</option><option>Clã Tatsushiro</option><option>Clã Tenrou</option><option>Clã Tsuchigumo</option><option>Clã Uchiha</option><option>Clã Uemon</option><option>Clã Uzumaki</option><option>Clã Yamanaka</option><option>Clã Yotsuki</option><option>Clã Yuki</option><option>Clã Yuuhi</option><option>Família Akagi</option><option>Família dos B</option><option>Família Kageno</option><option>Família Kagetsu</option><option>Família Kaminarimon</option><option>Família Kohinata</option><option>Família Sendou</option><option>Família Yuino</option><option>Família Wagarashi</option><option>Família Wasabi</option><option>Linhagem de Guardiões</option></select></label>
+          <label>Idade<input type="number" min="0" placeholder="—"></label>
+          <label>Gênero<select><option value="">Selecione</option><option>Masculino</option><option>Feminino</option><option>Outro</option></select></label>
+          <label>Graduação<select><option value="">Selecione</option><option>N/A</option><option>GENIN</option><option>CHUNNIN</option><option>JOUNIN</option><option>JOUNIN DE ELITE</option></select></label>
+          <label class="wide">Parentescos<input placeholder="Familiares, vínculos..."></label>
+          <label class="wide">Tipo de Ninja<select id="ninjaType"></select></label>
+          <div id="ninjaTypeBox" class="type-box wide" hidden></div>
+        </div>
+
+        <section class="skills" aria-label="Habilidades Únicas">
+          <div class="skills-head"><h2>Habilidades Únicas</h2><button type="button" id="addSkill" class="action">+ Nova habilidade</button></div>
+          <div id="skillList" class="skill-list"></div>
+          <input type="file" id="skillImageInput" accept="image/*,.gif" hidden>
+        </section>
+
+        <section class="skills" aria-label="Hidens">
+          <div class="skills-head"><h2>Hidens</h2><button type="button" id="addHiden" class="action">+ Novo Hiden</button></div>
+          <div id="hidenList" class="skill-list"></div>
+          <input type="file" id="hidenImageInput" accept="image/*,.gif" hidden>
+        </section>
+
+        <section class="skills" aria-label="Kuchiyose">
+          <div class="skills-head"><h2>Kuchiyose</h2><button type="button" id="addKuchiyose" class="action">+ Novo Kuchiyose</button></div>
+          <div id="kuchiyoseList" class="skill-list"></div>
+          <input type="file" id="kuchiyoseImageInput" accept="image/*,.gif" hidden>
+        </section>
+      </div>
+
+      <aside class="portrait-column">
+        <div class="portrait">
+          <input type="file" id="portraitInput" accept="image/*,.gif" hidden>
+          <img id="portraitPreview" alt="Retrato do personagem">
+          <button type="button" id="portraitButton">＋ Adicionar retrato</button>
+          <span>RETRATO DO PERSONAGEM</span>
+        </div>
+        <div class="origin">
+        <h2>País de origem</h2>
+        <div class="emblem-row" id="countries">
+          <button class="emblem" data-choice="País da Água" style="--c1:#3b8bff"><b>水</b><span>País da Água</span></button>
+          <button class="emblem" data-choice="País do Vento" style="--c1:#22c55e"><b>風</b><span>País do Vento</span></button>
+          <button class="emblem" data-choice="País do Fogo" style="--c1:#ef4444"><b>火</b><span>País do Fogo</span></button>
+          <button class="emblem" data-choice="País da Terra" style="--c1:#c2692a"><b>土</b><span>País da Terra</span></button>
+          <button class="emblem" data-choice="País do Raio" style="--c1:#facc15"><b>雷</b><span>País do Raio</span></button>
+          <button class="emblem" data-choice="País do Ferro" style="--c1:#9ca3af;--c2:#ffffff;--bd:#e5e7eb"><b>鉄</b><span>País do Ferro</span></button>
+          <button class="emblem" data-choice="País do Som" style="--c1:#a855f7"><b>音</b><span>País do Som</span></button>
+          <button class="emblem" data-choice="País das Ondas" style="--c1:#3b82f6;--c2:#ffffff;--bd:#bfdbfe"><b>波</b><span>País das Ondas</span></button>
+          <button class="emblem" data-choice="País da Geada" style="--c1:#7dd3fc;--c2:#ffffff;--bd:#e0f2fe"><b>霜</b><span>País da Geada</span></button>
+          <button class="emblem" data-choice="País da Cachoeira" style="--c1:#22c55e;--c2:#ffffff;--bd:#bbf7d0"><b>滝</b><span>País da Cachoeira</span></button>
+          <button class="emblem" data-choice="País da Chuva" style="--c1:#9ca3af"><b>雨</b><span>País da Chuva</span></button>
+          <button class="emblem" data-choice="País da Grama" style="--c1:#86efac"><b>草</b><span>País da Grama</span></button>
+          <button class="emblem" data-choice="País do Pássaro" style="--c1:#f472b6"><b>鳥</b><span>País do Pássaro</span></button>
+          <button class="emblem" data-choice="País do Rio" style="--c1:#22c55e;--c2:#9ca3af;--bd:#86efac"><b>川</b><span>País do Rio</span></button>
+          <button class="emblem" data-choice="País do Redemoinho" style="--c1:#ef4444"><b>渦</b><span>País do Redemoinho</span></button>
+          <button class="emblem" data-choice="País do Chá" style="--c1:#4ade80;--c2:#f472b6;--bd:#f9a8d4"><b>茶</b><span>País do Chá</span></button>
+        </div>
+
+        <h2>Afiliação</h2>
+        <div class="emblem-row" id="villages">
+          <button class="emblem" data-choice="Kirigakure" style="--c1:#7dd3fc"><b>霧</b><span>Névoa</span></button>
+          <button class="emblem" data-choice="Sunagakure" style="--c1:#22c55e"><b>砂</b><span>Areia</span></button>
+          <button class="emblem" data-choice="Konohagakure" style="--c1:#ef4444"><b>木</b><span>Folha</span></button>
+          <button class="emblem" data-choice="Iwagakure" style="--c1:#c2692a"><b>岩</b><span>Pedra</span></button>
+          <button class="emblem" data-choice="Kumogakure" style="--c1:#facc15"><b>雲</b><span>Nuvem</span></button>
+          <button class="emblem" data-choice="Samurai" style="--c1:#4b5563;--bd:#9ca3af"><b>侍</b><span>Samurai</span></button>
+          <button class="emblem" data-choice="Monge" style="--c1:#000000;--c2:#ffffff;--bd:#ffffff"><b>僧</b><span>Monge</span></button>
+        </div>
+        <div id="elementGroups"></div>
+        </div>
+        <div class="points-card">
+          <small>PONTOS DISPONÍVEIS</small>
+          <strong id="availablePoints">0</strong>
+          <span>Distribua nos atributos ninja</span>
+        </div>
+
+        <div class="points-card ryo-card">
+          <small>RYO</small>
+          <strong id="ryoTotal">0</strong>
+          <div class="ryo-row">
+            <input id="ryoAmount" type="number" min="1" value="100" aria-label="Quantidade de ryo">
+            <button type="button" id="ryoAdd" class="action">Adicionar</button>
+            <button type="button" id="ryoSpend" class="action">Gastar</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="lower">
+      <div class="chart-panel panel">
+        <h2>Atributos ninja</h2>
+        <div class="chart-wrap">
+          <svg id="attributeChart" viewBox="0 0 440 390" role="img" aria-label="Gráfico heptagonal dos atributos"></svg>
+        </div>
+        <p class="hint">Cada atributo evolui individualmente até 200 pontos (Rank SS).</p>
+        <div id="attributeControls" class="attribute-controls"></div>
+        <div class="admin-tools">
+          <details>
+            <summary>Área do administrador · conceder pontos</summary>
+            <div class="admin-row">
+              <input id="grantAmount" type="number" min="1" value="10" aria-label="Quantidade de pontos">
+              <button id="grantButton" class="action">Conceder pontos</button>
+            </div>
+            <small>Protótipo visual: em um site publicado, a permissão de administrador deve ser validada no servidor.</small>
+          </details>
+        </div>
+      </div>
+
+      <div class="extra-panel panel">
+        <h2>Atributos extras</h2>
+        <p class="hint">Marque os ranks conquistados em cada especialidade.</p>
+        <div id="extrasList" class="extras-list"></div>
+      </div>
+
+      <div class="lists-column">
+        <section class="panel">
+          <h2>Lista de Jutsus</h2>
+          <div class="add-row"><input id="jutsuInput" placeholder="Nome do Jutsu"><button data-add="jutsu">+</button></div>
+          <ul id="jutsuList" class="item-list"></ul>
+        </section>
+        <section class="panel">
+          <h2>Lista de equipamentos</h2>
+          <div class="add-row"><input id="equipmentInput" placeholder="Nome do equipamento"><button data-add="equipment">+</button></div>
+          <ul id="equipmentList" class="item-list"></ul>
+        </section>
+      </div>
+    </section>
+    <section class="panel backstory" id="backstoryPanel">
+      <h2>Backstory</h2>
+      <textarea id="backstory" rows="9" placeholder="A história do personagem, suas características e trejeitos..."></textarea>
+    </section>
+    <div class="finish-row"><button type="button" id="finishButton" class="action finish">Pronto</button></div>
+    <footer>FICHA DE PERSONAGEM · SISTEMA DE PROGRESSÃO NINJA</footer>
+  </main>
+  <dialog id="sheetPanel" class="sheet-panel" aria-labelledby="panelTitle">
+    <div class="dialog-head"><h2 id="panelTitle">Painel de fichas</h2><button type="button" id="closePanel" class="action">Fechar</button></div>
+    <ul id="sheetItems" class="sheet-items"></ul>
+    <div class="control-grid">
+      <button type="button" class="ctl" id="ctlNew"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Criar fichas</span></button>
+      <button type="button" class="ctl" id="ctlEdit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg><span>Editar fichas</span></button>
+      <button type="button" class="ctl" id="ctlDelete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg><span>Excluir fichas</span></button>
+      <button type="button" class="ctl" id="ctlExport"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>Exportar dados</span></button>
+      <button type="button" class="ctl ctl-full" id="ctlImport"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M4 21h16"/></svg><span>Importar backup</span></button>
+    </div>
+    <input type="file" id="importInput" accept="application/json,.json" hidden>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
